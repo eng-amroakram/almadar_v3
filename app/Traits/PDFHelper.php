@@ -31,7 +31,7 @@ trait PDFHelper
         }
 
         if ($realEstate->real_estate_type == 'duplex') {
-            $add = "دبلكس " . $realEstate->location->building_status . " " . number_format($sale->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->character;
+            $add = "دبلكس " . __($realEstate->location->building_status) . " " . number_format($sale->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->character;
         }
 
         if ($realEstate->real_estate_type == 'condominium') {
