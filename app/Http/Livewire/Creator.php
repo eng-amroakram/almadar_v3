@@ -275,6 +275,9 @@ class Creator extends Component
 
         if ($this->service == "SalesService") {
 
+            $this->rules = $service->rules("", $property_type, $data['client_buyer_id'], $data['client_seller_id']);
+
+
             if ($data['is_first_home'] == 1) {
                 $this->rules['deserved_amount'] = ['required'];
                 $this->rules['commission_vat'] = [];

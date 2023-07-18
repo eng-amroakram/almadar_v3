@@ -201,7 +201,7 @@ class Sale extends Model
         return $this->realEstate->location->branch->name;
     }
 
-    public function scopeGetRules(Builder $builder, $id)
+    public function scopeGetRules(Builder $builder, $id, $client_buyer_id, $client_seller_id)
     {
         return [
             "is_first_home" => ["required"],
@@ -224,7 +224,7 @@ class Sale extends Model
             "client_buyer_name" => ["required"],
             "client_buyer_phone" => ["required"],
             "client_buyer_id_number_type" => ["required"],
-            "client_buyer_id_number" => ["required", "unique:clients,id_number"],
+            "client_buyer_id_number" => ["required", "unique:clients,id_number,$client_buyer_id"],
             "client_buyer_email" => ["required", "email"],
             "client_buyer_description" => ["required"],
             "client_buyer_nationality_id" => ["required"],
@@ -243,7 +243,7 @@ class Sale extends Model
             "client_seller_name" => ["required"],
             "client_seller_phone" => ["required"],
             "client_seller_id_number_type" => ["required"],
-            "client_seller_id_number" => ["required", "unique:clients,id_number"],
+            "client_seller_id_number" => ["required", "unique:clients,id_number,$client_seller_id"],
             "client_seller_email" => ["required", "email"],
             "client_seller_description" => ["required"],
             "client_seller_nationality_id" => ["required"],

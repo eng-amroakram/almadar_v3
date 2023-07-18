@@ -209,9 +209,9 @@ class SalesService extends Controller
         return config('views.modals.tabs.sales-service');
     }
 
-    public function rules($id = "")
+    public function rules($id = "", $ar = "", $client_buyer_id = "", $client_seller_id = "")
     {
-        return Sale::getRules($id);
+        return Sale::getRules($id, $client_buyer_id, $client_seller_id);
     }
 
     public function messages()
