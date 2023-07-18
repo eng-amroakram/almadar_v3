@@ -1,0 +1,28 @@
+<?php
+
+return [
+    "user_id" => [],
+    "floor" => [],
+    "floors" => [],
+    "flats" => [],
+    "flat_rooms" => [],
+    "rooms" => [],
+    "stores" => [],
+    "bathrooms" => [],
+    "interface_length" => [],
+    "age" => [],
+    "annual_income" => [],
+    "space" => [],
+    "total" => [],
+    "price" => [],
+    "price_meter" => [],
+    "notes" => [],
+    "land_number" => [],
+    "statement" => [],
+    "character" => [],
+    "block_number" => [],
+    "directions" => ["east", "north", "south", "west"],
+    "real_estate_type" => [],
+    "creator" => [],
+    "updater" => [],
+];
