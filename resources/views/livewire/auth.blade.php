@@ -135,13 +135,13 @@
 
                     if ($email_phone_login) {
 
-                        if (!$email_phone_login.startsWith("05")) {
-                            let position = $email_phone_login.search("@");
-                            if (position == -1) {
-                                $login_phone_email_validation_message.text("يرجى إدخال بريد الكتروني صحيح");
-                            }
-                            return false;
-                        }
+                        // if (!$email_phone_login.startsWith("05") && !$email_phone_login.startsWith("5")) {
+                        //     let position = $email_phone_login.search("@");
+                        //     if (position == -1) {
+                        //         $login_phone_email_validation_message.text("يرجى إدخال بريد الكتروني صحيح");
+                        //     }
+                        //     return false;
+                        // }
 
                         if ($email_phone_login.startsWith("05")) {
                             if ($email_phone_login.length != 10) {

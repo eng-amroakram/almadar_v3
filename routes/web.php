@@ -93,6 +93,47 @@ Route::controller(PanelViewsController::class)->prefix('panel/')->as('panel.')->
 Route::get(
     'testing',
     function () {
+
+        // Assuming you receive the date input from the user in the format 'Y-m-d'
+        $userEnteredDate = '2023-07-18'; // Replace this with your actual user input
+
+        // Create a DateTime object from the user input
+        $date = new DateTime($userEnteredDate);
+
+        // Define the array of days you want to schedule the course
+        $daysToSchedule = ['Saturday', 'Monday']; // Add other days as needed
+
+        // Define the total hours for the course
+        $totalHours = 10; // Change this as needed
+
+        // Define the hours for each day from the array
+        $hoursPerDay = 3; // Change this as needed
+
+        // Define the number of lectures for the course based on the total hours and hours per day
+        $numberOfLectures = $totalHours / $hoursPerDay;
+
+        // Get the days of course and dates lectures after the start date until the number of lectures is reached as [day => date]
+
+        $days = [];
+
+        $i = 0;
+
+        while ($i < $numberOfLectures) {
+            $date->modify('+1 day');
+
+            $day = $date->format('l');
+
+            if (in_array($day, $daysToSchedule)) {
+                $days[$date->format('Y-m-d')] = $day;
+                $i++;
+            }
+        }
+
+
+        foreach($days as $date => $day) {
+            dd($date, $day);
+        }
+
         return view('web.tesing');
     }
 );
