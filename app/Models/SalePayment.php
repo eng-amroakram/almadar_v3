@@ -61,7 +61,7 @@ class SalePayment extends Model
 
     public function buyer()
     {
-        return $this->belongsTo(Client::class,'buyer_id', 'id');
+        return $this->belongsTo(Client::class, 'buyer_id', 'id');
     }
 
     public function reservation()
@@ -112,12 +112,12 @@ class SalePayment extends Model
 
     public function getBuyerNameAttribute()
     {
-        return $this->buyer->name;
+        return $this->buyer ? $this->buyer->name : '';
     }
 
     public function getSellerNameAttribute()
     {
-        return $this->seller->name;
+        return $this->seller ? $this->seller->name : '';
     }
 
     public function getCreatedAtAttribute($value)

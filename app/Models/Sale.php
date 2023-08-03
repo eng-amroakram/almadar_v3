@@ -78,7 +78,7 @@ class Sale extends Model
 
     public function getPropertyTypeAttribute()
     {
-        return $this->realEstate->real_estate_type;
+        return $this->realEstate ? $this->realEstate->real_estate_type : '';
     }
 
     public function offer()
@@ -143,22 +143,30 @@ class Sale extends Model
 
     public function getCityNameAttribute()
     {
-        return $this->realEstate->location->city->name;
+        if ($this->realEstate) {
+            if ($this->realEstate->location) {
+                if ($this->realEstate->location->city) {
+                    return $this->realEstate->location->city->name;
+                }
+            }
+        }
+
+        return '';
     }
 
     public function getRealEstateTypeAttribute()
     {
-        return __($this->realEstate->real_estate_type);
+        return $this->realEstate ? __($this->realEstate->real_estate_type) : '';
     }
 
     public function getLandNumberAttribute()
     {
-        return $this->realEstate->land_number;
+        return $this->realEstate ? $this->realEstate->land_number : '';
     }
 
     public function getSpaceAttribute()
     {
-        return $this->realEstate->space;
+        return $this->realEstate ? $this->realEstate->space : '';
     }
 
     public function getPriceCommissionVatAttribute()
@@ -188,17 +196,25 @@ class Sale extends Model
 
     public function getSpaceStringAttribute()
     {
-        return number_format($this->realEstate->space);
+        return $this->realEstate ? number_format($this->realEstate->space) : '';
     }
 
     public function getClientEmploymentTypeAttribute()
     {
-        return __($this->buyer->employment_type);
+        return $this->buyer ? __($this->buyer->employment_type) : '';
     }
 
     public function getBranchNameAttribute()
     {
-        return $this->realEstate->location->branch->name;
+        if ($this->realEstate) {
+            if ($this->realEstate->location) {
+                if ($this->realEstate->location->branch) {
+                    return $this->realEstate->location->branch->name;
+                }
+            }
+        }
+
+        return '';
     }
 
     public function scopeGetRules(Builder $builder, $id, $client_buyer_id, $client_seller_id)
