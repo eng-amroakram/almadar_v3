@@ -813,7 +813,9 @@
                         console.log($te);
                         const singleSelect = document.querySelector(id);
                         const singleSelectInstance = mdb.Select.getInstance(singleSelect);
-                        singleSelectInstance.setValue($te);
+                        if (singleSelectInstance) {
+                            singleSelectInstance.setValue($te);
+                        }
                     }
                 });
 

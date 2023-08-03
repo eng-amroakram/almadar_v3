@@ -219,8 +219,8 @@ class Creator extends Component
             $this->emit('updateClientsellerCreator', $client_array);
             $this->emit('select2', "#client_seller_nationality_id_select_id_creator", $client_model->nationality_id);
             $this->emit('select2', "#client_seller_city_id_select_id_creator", $client_model->city_id);
-            $this->emit('select2', "#client_seller_employment_type_select_id_creator", $client_model->employment_type);
-            $this->emit('select2', "#client_seller_housing_support_select_id_creator", $client_model->housing_support);
+            // $this->emit('select2', "#client_seller_employment_type_select_id_creator", $client_model->employment_type);
+            // $this->emit('select2', "#client_seller_housing_support_select_id_creator", $client_model->housing_support);
         }
     }
 
