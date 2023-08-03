@@ -812,6 +812,8 @@
                         const singleSelect = document.querySelector(id);
                         const singleSelectInstance = mdb.Select.getInstance(singleSelect);
                         singleSelectInstance.setValue($te);
+
+                        console.log(id);
                         console.log($te);
                     }
                 });
@@ -822,7 +824,7 @@
                         const singleSelect = document.querySelector(id);
                         const singleSelectInstance = mdb.Select.getInstance(singleSelect);
                         singleSelectInstance.setValue($te);
-                        console.log($te);
+
                     }
 
                     $(id).attr("disabled", "disabled");
@@ -836,7 +838,7 @@
                         const singleSelect = document.querySelector(id);
                         const singleSelectInstance = mdb.Select.getInstance(singleSelect);
                         singleSelectInstance.setValue($te);
-                        console.log($te);
+
                     }
 
                     $(id).attr("disabled", "disabled");
@@ -851,7 +853,6 @@
                         $(".remaining_amount-validation").text("تم دفع المبلغ بالكامل");
                     }
                 });
-
 
                 Livewire.on('setSelectInputCreator', function(data, inputid) {
                     var $input = $("#" + inputid);
