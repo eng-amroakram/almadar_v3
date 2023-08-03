@@ -27,7 +27,8 @@
 
                         @if (!$offer->sale)
                             <button type="button" class="btn btn-outline-primary" data-mdb-toggle="modal"
-                                data-mdb-target="#creator-sale-button" wire:click="setClientOfferReservation" data-mdb-ripple-color="dark">بيع</button>
+                                data-mdb-target="#creator-sale-button" wire:click="setClientOfferReservation"
+                                data-mdb-ripple-color="dark">بيع</button>
                         @endif
 
                         @if ($offer->sale)
@@ -45,7 +46,7 @@
                                     <h6>معلومات العرض</h6>
                                 </div>
 
-                                @if ($offer->reservation)
+                                @if ($offer->reservation && !$offer->sale)
                                     <div class="p-2">
                                         <button class="btn btn-sm btn-outline-danger" data-mdb-toggle="modal"
                                             data-mdb-target="#" wire:click="cancelReservation"
