@@ -809,12 +809,11 @@
                 Livewire.on('select2', function(id, value) {
                     let $te = value + '';
                     if ($te != 'null' && $te) {
+                        console.log(id);
+                        console.log($te);
                         const singleSelect = document.querySelector(id);
                         const singleSelectInstance = mdb.Select.getInstance(singleSelect);
                         singleSelectInstance.setValue($te);
-
-                        console.log(id);
-                        console.log($te);
                     }
                 });
 
