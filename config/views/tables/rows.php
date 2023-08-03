@@ -112,7 +112,7 @@ return [
         "remaining_amount_string" => 'property',
         "client_employment_type" => 'property',
         "branch_name" => 'property',
-        "status" => 'status',
+        // "status" => 'status',
         "actions" => ["show"],
     ],
 

@@ -17,11 +17,11 @@ trait PDFHelper
 
         $sale_payment = SalePayment::find($sale_payment_id);
         $sale = $sale_payment->sale;
-        $offer = $sale->offer;
+        // $offer = $sale->offer;
+        // $obj = new Arabic('Numbers');
         $realEstate = $sale->realEstate;
 
 
-        $obj = new Arabic('Numbers');
 
         $add = __($realEstate->real_estate_type) . " " . number_format($sale->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->character;
 

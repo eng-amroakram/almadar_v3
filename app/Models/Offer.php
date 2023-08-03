@@ -490,10 +490,14 @@ class Offer extends Model
     {
         $offer = $builder->find($id);
 
+        $sale_id = $offer->sale ? $offer->sale->id : '';
         $real_estate_id = $offer->real_estate_id;
         $real_estate_location_id = $offer->realEstate->location;
 
+        Sale::deleteModel($sale_id);
+        sleep(3);
         RealEstateLocation::deleteModel($real_estate_location_id);
+        sleep(3);
         RealEstate::deleteModel($real_estate_id);
 
         if ($offer) {

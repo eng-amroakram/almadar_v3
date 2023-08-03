@@ -166,10 +166,13 @@ class OfferProfile extends Component
     public function setClientOfferReservation()
     {
         $offer = Offer::find($this->offer->id);
-        $reservation =  $offer->reservation;
-        $buyer = $reservation->client;
-
-        $this->emit("setBuyerReservation", $buyer->id);
+        if ($offer) {
+            $reservation =  $offer->reservation;
+            if ($reservation) {
+                $buyer = $reservation->client;
+                $this->emit("setBuyerReservation", $buyer->id);
+            }
+        }
     }
 
     public function storeReservation($data)

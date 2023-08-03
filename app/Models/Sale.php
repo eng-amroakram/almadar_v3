@@ -249,8 +249,8 @@ class Sale extends Model
             "client_seller_nationality_id" => ["required"],
             "client_seller_city_id" => ["required"],
             "client_seller_neighborhood_name" => ["required"],
-            "client_seller_employment_type" => ["required"],
-            "client_seller_housing_support" => ["required"],
+            "client_seller_employment_type" => ["nullable"],
+            "client_seller_housing_support" => ["nullable"],
             "client_seller_building_number" => ["required"],
             "client_seller_street_name" => ["required"],
             "client_seller_zip_code" => ["required"],
@@ -310,8 +310,8 @@ class Sale extends Model
             "client_seller_nationality_id.required" => "يجب اختيار الجنسية",
             "client_seller_city_id.required" => "يجب اختيار المدينة",
             "client_seller_neighborhood_name.required" => "يجب ادخال اسم الحي",
-            "client_seller_employment_type.required" => "يجب اختيار نوع العمل",
-            "client_seller_housing_support.required" => "يجب اختيار دعم سكني",
+            // "client_seller_employment_type.required" => "يجب اختيار نوع العمل",
+            // "client_seller_housing_support.required" => "يجب اختيار دعم سكني",
             "client_seller_building_number.required" => "يجب ادخال رقم المبنى",
             "client_seller_street_name.required" => "يجب ادخال اسم الشارع",
             "client_seller_zip_code.required" => "يجب ادخال الرمز البريدي",
@@ -410,13 +410,14 @@ class Sale extends Model
             'amount_paid' => $sale->amount_paid + $price_reservarion
         ]);
 
-        $sale_payment = $reservation->salePayment;
-
-        if ($sale_payment) {
-            $sale_payment->update([
-                'sale_id' => $sale->id,
-                'seller_id' => $sale->seller_id
-            ]);
+        if ($reservation) {
+            $sale_payment = $reservation->salePayment;
+            if ($sale_payment) {
+                $sale_payment->update([
+                    'sale_id' => $sale->id,
+                    'seller_id' => $sale->seller_id
+                ]);
+            }
         }
 
         $real_estate->update([

@@ -821,7 +821,9 @@
                 var $input = $("#" + inputid);
                 var singleSelect = document.querySelector("#" + inputid);
                 var singleSelectInstance = mdb.Select.getInstance(singleSelect);
-                console.log(234567);
+
+
+
                 $.each(data, function(index, value) {
 
                     if (value == id) {

@@ -70,11 +70,11 @@ trait Helpers
             "real_estate_space" => $offer->space,
             "real_estate_location" => $offer->city_name . " بلوك رقم " . $offer->block_number,
             "real_estate_location_v2" => $offer->land_number,
-            "total_price" => number_format($offer->total, 2),
+            "total_price" => number_format($offer->total),
             "total_price_text" => $obj->int2str($offer->total) . "  ريال فقط لا غير",
-            "paid_amount" => number_format($sale->amount_paid, 2),
+            "paid_amount" => number_format($sale->amount_paid),
             "date_expire" => "01-02-2022",
-            "amount_due" => number_format($sale->remaining_amount, 2),
+            "amount_due" => number_format($sale->remaining_amount),
             "days" => "360",
             "customer_buyer_name" => $sale->buyer->name,
             "customer_seller_name" => $sale->seller->name,
@@ -107,8 +107,8 @@ trait Helpers
         $name_branch = "القطيف";
 
         $sale = Sale::find($sale_id);
-        $offer = $sale->offer;
-        $obj = new Arabic('Numbers');
+        // $offer = $sale->offer;
+        // $obj = new Arabic('Numbers');
         $realEstate = $sale->realEstate;
 
         $add = __($realEstate->real_estate_type) . " " . number_format($sale->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->character;
@@ -133,7 +133,7 @@ trait Helpers
             $add = "شاليه " . number_format($sale->space) . "م " . "ب" . $realEstate->location->city->name;
         }
 
-        $real_estate_data = "دفعة اتفاقية تخص " . $add . " والمتبقي " . $sale->remaining_amount . " ريال";
+        $real_estate_data = "دفعة اتفاقية تخص " . $add . " والمتبقي " . $sale->remaining_amount_string . " ريال";
 
         if ($sale->payment_method == "cash_money") {
             $payment = "دفع كاش";

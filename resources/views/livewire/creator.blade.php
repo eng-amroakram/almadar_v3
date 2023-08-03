@@ -609,6 +609,7 @@
 
                     if ($name == "amount_paid") {
                         let $total_price = numbers("total_amount", $("#total_amount_input_id_creator").val());
+                        console.log($total_price);
                         let $amount_paid = numbers("amount_paid", $("#amount_paid_input_id_creator").val());
                         if ($total_price && $amount_paid) {
                             if ($amount_paid > $total_price) {

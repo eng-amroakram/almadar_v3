@@ -86,7 +86,11 @@ class Creator extends Component
         $this->{"sale_id"} = $sale_id;
         $this->{"seller_id"} = $sale->seller_id;
         $this->{"offer_id"} = $sale->offer_id;
-        $this->{"reservation_id"} = $sale->offer->reservation->id;
+        if ($sale->offer->reservation) {
+            $this->{"reservation_id"} = $sale->offer->reservation->id;
+        } else {
+            $this->{"reservation_id"} = null;
+        }
         $this->emit('updateSalePaymentBuyerFieldwithDisableIt', "#buyer_id_select_id_creator", $buyer_id, number_format($remaining_amount));
     }
 
