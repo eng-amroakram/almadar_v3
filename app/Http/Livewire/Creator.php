@@ -206,13 +206,14 @@ class Creator extends Component
             $this->{"client_seller_employment_type"} = $client_model->employment_type;
             $this->{"client_seller_housing_support"} = $client_model->housing_support;
 
-            $client_array = array_filter($client_model->toArray(), function ($value) {
+
+            $client_array = array_filter($client_model->toArray(), function ($index, $value) {
+                dd($index, $value);
                 return $value !== null;
             });
 
             unset($client_array["id"]);
             unset($client_array["status"]);
-            unset($client_array["neighborhood_id"]);
 
             $client_array = array_combine(array_map(function ($key) {
                 return "client_seller_" . $key;
