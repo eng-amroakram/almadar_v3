@@ -104,6 +104,7 @@ trait PDFHelper
         }
 
         $path = public_path('pdf-viewer/web/deposit.pdf');
-        return Response::download($path, "$sale->sale_code" . '.pdf', ['Content-Type: application/pdf']);
+        $sale_code =  $sale ? $sale->sale_code : '';
+        return Response::download($path,  $sale_code . '.pdf', ['Content-Type: application/pdf']);
     }
 }
