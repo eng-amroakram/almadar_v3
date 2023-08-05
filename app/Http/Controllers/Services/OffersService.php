@@ -71,22 +71,6 @@ class OffersService extends Controller
         return $contents;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function delete($id)
     {
         $offer = Offer::find($id);
