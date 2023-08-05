@@ -214,6 +214,7 @@ class Creator extends Component
 
             unset($client_array["id"]);
             unset($client_array["status"]);
+            unset($client_array["neighborhood_id"]);
 
             $client_array = array_combine(array_map(function ($key) {
                 return "client_seller_" . $key;
