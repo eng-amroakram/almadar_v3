@@ -189,7 +189,7 @@ class Creator extends Component
         $client_model = Client::find($id);
 
         if ($client_model) {
-
+            dd($client_model);
             $this->{"client_seller_name"} = $client_model->name;
             $this->{"client_seller_phone"} = $client_model->phone;
             $this->{"client_seller_id_number_type"} = $client_model->id_number_type;
@@ -212,9 +212,26 @@ class Creator extends Component
                 return $value !== null;
             });
 
-            dd($client_array);
-            unset($client_array["id"]);
-            unset($client_array["status"]);
+            //* "city_id" => 1
+            //* "nationality_id" => 1
+            //* "name" => "على ابراهيم احمد الشاعر"
+            //* "phone" => "0504918720"
+            //* "email" => "a@gmail.com"
+            //* "id_number_type" => "سعودي"
+            //* "id_number" => "100555555"
+            //* "description" => "نفسه"
+            //* "employer" => "الوكالة"
+            //* "zip_code" => "6401"
+            //* "building_number" => "321"
+            //* "street_name" => "123"
+            //* "neighborhood_name" => "البحر"
+            //* "employment_type" => "private"
+            //* "extra_figure" => "15555"
+            // "unit_number" => "6201"
+            // "housing_support" => "1"
+            // "status" => "1"
+            // "is_buy" => "2"
+
 
             $client_array = array_combine(array_map(function ($key) {
                 return "client_seller_" . $key;
