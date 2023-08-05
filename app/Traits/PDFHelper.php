@@ -27,6 +27,7 @@ trait PDFHelper
         $realEstate = $offer->realEstate;
 
         $total = $sale ? $sale->amount_paid : $sale_payment->amount;
+        $remaining_amount = $sale ? $sale->remaining_amount : $realEstate->price - $total;
 
         $add = __($realEstate->real_estate_type) . " " . number_format($realEstate->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->character;
 
@@ -51,7 +52,7 @@ trait PDFHelper
             $add = "شاليه " . number_format($realEstate->space) . "م " . "ب" . $realEstate->location->city->name;
         }
 
-        $real_estate_data = "دفعة اتفاقية تخص " . $add . " والمتبقي " . $realEstate->remaining_amount . " ريال";
+        $real_estate_data = "دفعة اتفاقية تخص " . $add . " والمتبقي " . $remaining_amount . " ريال";
 
         if ($sale_payment->payment_method == "cash_money") {
             $payment = "دفع كاش";
