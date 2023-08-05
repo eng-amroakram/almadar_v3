@@ -27,7 +27,8 @@ trait PDFHelper
         $realEstate = $offer->realEstate;
 
         $total = $sale ? $sale->amount_paid : $sale_payment->amount;
-        $remaining_amount = $sale ? $sale->remaining_amount : $realEstate->price - $total;
+
+        $remaining_amount = $sale ? $sale->remaining_amount : (float) $realEstate->total - (float) $total;
 
         $add = __($realEstate->real_estate_type) . " " . number_format($realEstate->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->character;
 
