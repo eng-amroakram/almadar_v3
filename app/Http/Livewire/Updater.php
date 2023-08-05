@@ -465,6 +465,7 @@ class Updater extends Component
         }
 
         if ($message) {
+            sleep(2);
             $this->alertMessage($message, 'success');
             $this->emit('updateTable');
             $this->emit('closeModal', $offer_check);

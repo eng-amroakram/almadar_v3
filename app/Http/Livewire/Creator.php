@@ -334,6 +334,7 @@ class Creator extends Component
         $message = $service->store($data);
 
         if ($message) {
+            sleep(2);
             $this->alertMessage($message, 'success');
             $this->emit('updateTable');
             $this->emit('closeModal');
