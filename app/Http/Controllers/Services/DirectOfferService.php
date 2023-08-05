@@ -145,7 +145,6 @@ class DirectOfferService extends Controller
             __("turnkey") => 'turnkey',
         ];
 
-
         $inputs = [
             [
                 select("select", "city_id", "city_id_select_id$prefix_id", "fab fa-searchengin", "", "select inputSelect$type", "", true, cities(true), "", false, "اختار المدينة", "text-danger city_id-validation fw-bold ms-5 reset-validation"),
