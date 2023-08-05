@@ -187,7 +187,6 @@ class Creator extends Component
         }
 
         $client_model = Client::find($id);
-        dd($client_model);
 
         if ($client_model) {
 
@@ -210,6 +209,7 @@ class Creator extends Component
 
 
             $client_array = array_filter($client_model->toArray(), function ($value) {
+                dd($value);
                 return $value !== null;
             });
 
