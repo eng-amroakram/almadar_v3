@@ -187,6 +187,8 @@ class Creator extends Component
         }
 
         $client_model = Client::find($id);
+        dd($client_model);
+
         if ($client_model) {
 
             $this->{"client_seller_name"} = $client_model->name;
@@ -207,8 +209,7 @@ class Creator extends Component
             $this->{"client_seller_housing_support"} = $client_model->housing_support;
 
 
-            $client_array = array_filter($client_model->toArray(), function ($index, $value) {
-                dd($index, $value);
+            $client_array = array_filter($client_model->toArray(), function ($value) {
                 return $value !== null;
             });
 
