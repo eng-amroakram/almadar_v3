@@ -53,7 +53,7 @@ trait PDFHelper
             $add = "شاليه " . number_format($realEstate->space) . "م " . "ب" . $realEstate->location->city->name;
         }
 
-        $real_estate_data = "دفعة اتفاقية تخص " . $add . " والمتبقي " . $remaining_amount . " ريال";
+        $real_estate_data = "دفعة اتفاقية تخص " . $add . " والمتبقي " . number_format($remaining_amount) . " ريال";
 
         if ($sale_payment->payment_method == "cash_money") {
             $payment = "دفع كاش";
@@ -67,7 +67,7 @@ trait PDFHelper
             $payment = "تحويل بنكي (" . $sale_payment->bank . ")";
         }
 
-        $real_estate_data_t = "دفعة رقم (1): " . "مجموع ماتم دفعه حتى تاريخه " . number_format($total, 2) . " ريال";
+        $real_estate_data_t = "دفعة رقم (1): " . "مجموع ماتم دفعه حتى تاريخه " . number_format($total) . " ريال";
 
         if ($realEstate->location->branch->code == "KHBR") {
             $number_branch = 2053112320;
