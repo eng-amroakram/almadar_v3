@@ -206,8 +206,6 @@ class Creator extends Component
             $this->{"client_seller_employment_type"} = $client_model->employment_type;
             $this->{"client_seller_housing_support"} = $client_model->housing_support;
 
-            dd($client_model);
-
             $client_array = array_filter($client_model->toArray(), function ($value) {
                 return $value !== null;
             });
