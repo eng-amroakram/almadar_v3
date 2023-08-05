@@ -208,11 +208,11 @@ class Creator extends Component
             $this->{"client_seller_housing_support"} = $client_model->housing_support;
 
 
-            $client_array = array_filter($client_model->toArray(), function ($index, $value) {
-                dd($value, $index);
+            $client_array = array_filter($client_model->toArray(), function ($value) {
                 return $value !== null;
             });
 
+            dd($client_array);
             unset($client_array["id"]);
             unset($client_array["status"]);
 
