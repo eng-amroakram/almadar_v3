@@ -862,9 +862,11 @@
                     var singleSelectInstance = mdb.Select.getInstance(singleSelect);
                     $input.empty();
 
+                    $input.append('<option value=""></option>');
+
                     $.each(data, function(index, value) {
                         $input.append('<option value="' + value + '">' + index + '</option>');
-                        singleSelectInstance.setValue(value);
+                        singleSelectInstance.setValue('');
                     });
                 });
 
