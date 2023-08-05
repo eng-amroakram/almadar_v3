@@ -6,6 +6,7 @@ use App\Http\Controllers\Services\Services;
 use App\Models\Client;
 use App\Models\Offer;
 use App\Models\Sale;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;

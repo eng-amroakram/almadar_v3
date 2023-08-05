@@ -779,6 +779,7 @@
             });
 
             Livewire.on("closeModal", function(check) {
+                window.location.reload();
                 let $id = "#{{ $updater_id }}";
                 $($id).modal('hide');
                 $($id).removeClass('show');

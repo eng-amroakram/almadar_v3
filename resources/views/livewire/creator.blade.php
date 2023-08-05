@@ -789,6 +789,7 @@
                 });
 
                 Livewire.on("closeModal", function(check) {
+                    window.location.reload();
                     let $id = "#{{ $creator_id }}";
                     $($id).modal('hide');
                     $(".reset-validation").val("");
