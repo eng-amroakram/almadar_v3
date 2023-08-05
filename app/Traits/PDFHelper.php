@@ -16,37 +16,42 @@ trait PDFHelper
         $name_branch = "القطيف";
 
         $sale_payment = SalePayment::find($sale_payment_id);
-        $sale = $sale_payment->sale;
+        $offer = $sale_payment->offer;
+        $sale = $offer->sale;
+        $buyer = $sale_payment->buyer;
+
+        // $sale = $sale_payment->sale;
         // $offer = $sale->offer;
         // $obj = new Arabic('Numbers');
-        $realEstate = $sale->realEstate;
 
+        $realEstate = $offer->realEstate;
 
+        $total = $sale ? $sale->amount_paid : $sale_payment->amount;
 
-        $add = __($realEstate->real_estate_type) . " " . number_format($sale->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->character;
+        $add = __($realEstate->real_estate_type) . " " . number_format($realEstate->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->character;
 
 
         if (in_array($realEstate->real_estate_type, ['land', 'warehouse_land', 'agircultural_land', 'industrial_land', 'residential_land'])) {
-            $add = "أرض " . number_format($sale->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->character;
+            $add = "أرض " . number_format($realEstate->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->character;
         }
 
         if ($realEstate->real_estate_type == 'duplex') {
-            $add = "دبلكس " . __($realEstate->location->building_status) . " " . number_format($sale->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->character;
+            $add = "دبلكس " . __($realEstate->location->building_status) . " " . number_format($realEstate->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->character;
         }
 
         if ($realEstate->real_estate_type == 'condominium') {
-            $add = "عمارة " . number_format($sale->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->floors . 'طوابق';
+            $add = "عمارة " . number_format($realEstate->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->floors . 'طوابق';
         }
 
         if ($realEstate->real_estate_type == 'flat') {
-            $add = "شقة " . number_format($sale->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->flat_rooms . ' غرف';
+            $add = "شقة " . number_format($realEstate->space) . "م " . "ب" . $realEstate->location->city->name . ' ' . $realEstate->flat_rooms . ' غرف';
         }
 
         if ($realEstate->real_estate_type == 'chalet') {
-            $add = "شاليه " . number_format($sale->space) . "م " . "ب" . $realEstate->location->city->name;
+            $add = "شاليه " . number_format($realEstate->space) . "م " . "ب" . $realEstate->location->city->name;
         }
 
-        $real_estate_data = "دفعة اتفاقية تخص " . $add . " والمتبقي " . $sale->remaining_amount . " ريال";
+        $real_estate_data = "دفعة اتفاقية تخص " . $add . " والمتبقي " . $realEstate->remaining_amount . " ريال";
 
         if ($sale_payment->payment_method == "cash_money") {
             $payment = "دفع كاش";
@@ -60,7 +65,7 @@ trait PDFHelper
             $payment = "تحويل بنكي (" . $sale_payment->bank . ")";
         }
 
-        $real_estate_data_t = "دفعة رقم (1): " . "مجموع ماتم دفعه حتى تاريخه " . number_format($sale->amount_paid, 2) . " ريال";
+        $real_estate_data_t = "دفعة رقم (1): " . "مجموع ماتم دفعه حتى تاريخه " . number_format($total, 2) . " ريال";
 
         if ($realEstate->location->branch->code == "KHBR") {
             $number_branch = 2053112320;
@@ -69,9 +74,9 @@ trait PDFHelper
 
         $data = [
             'sale_date' => $sale_payment->created_at,
-            'sale_code' => $sale->sale_code,
-            'customer_buyer_name' => $sale->buyer->name,
-            'customer_seller_name' => $sale->seller->name,
+            'sale_code' => $sale ? $sale->sale_code : '',
+            'customer_buyer_name' => $sale ? $sale->buyer->name : $buyer->name,
+            'customer_seller_name' => $sale ? $sale->seller->name : '',
             'paid_amount' => "مبلغ  " . $sale_payment->amount_string . "   ريال فقط لا غير",
             'check_number' => $payment,
             'real_estate_data' => $real_estate_data,
