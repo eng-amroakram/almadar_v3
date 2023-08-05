@@ -84,6 +84,7 @@ class Broker extends Model
         return [
             "name" => ["required", "string", "unique:brokers,name,$id"],
             "phone" => ["required", "string", "unique:brokers,phone,$id"],
+            "type" => ["required", "string", "in:office,person"],
         ];
     }
 
@@ -96,6 +97,9 @@ class Broker extends Model
             "phone.required" => "يرجى إدخال رقم الجوال",
             "phone.string" => "يرجى إدخال رقم الجوال بشكل صحيح",
             "phone.unique" => "رقم الجوال موجود مسبقاً",
+            "type.required" => "يرجى إدخال نوع الوسيط",
+            "type.string" => "يرجى إدخال نوع الوسيط بشكل صحيح",
+            "type.in" => "يرجى إدخال نوع الوسيط بشكل صحيح",
         ];
     }
 
