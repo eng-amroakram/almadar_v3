@@ -29,6 +29,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('index', [Controller::class, 'index'])->name('index');
 
+Route::get('excel', [WebViewsController::class, 'excel']);
+
 Route::controller(WebViewsController::class)->prefix('')->as('web.')->middleware(['web'])->group(function () {
     Route::get('', 'index')->name('index');
 });
@@ -130,7 +132,7 @@ Route::get(
         }
 
 
-        foreach($days as $date => $day) {
+        foreach ($days as $date => $day) {
             dd($date, $day);
         }
 
