@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             NeighborhoodSeeder::class,
             BranchSeeder::class,
             NationalitySeeder::class,
-            ClientSeeder::class,
+            // ClientSeeder::class,
             // BrokerSeeder::class,
             // RealEstateSeeder::class
         ]);
