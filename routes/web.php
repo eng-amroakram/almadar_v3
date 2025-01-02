@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('index', [Controller::class, 'index'])->name('index');
 
 Route::get('excel', [WebViewsController::class, 'excel']);
